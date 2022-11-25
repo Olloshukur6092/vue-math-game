@@ -47,7 +47,8 @@
 // import {  } from "vue-router";
 export default {
   props: {
-   
+   hideHomePage: { type: Function },
+   hideGamePage: { type: Function }
   },
   data() {
     return {
@@ -59,8 +60,8 @@ export default {
 
   mounted() {
     if (localStorage.getItem("data") !== null) {
-      // this.hideHomePage();
-      this.$router.push({ name: 'Game' })
+      this.hideHomePage();
+      // this.$router.push({ name: 'Game' })
     }
   },
   methods: {
@@ -74,8 +75,8 @@ export default {
       const level = this.level_1 ? this.level_1 : this.level_2 ? this.level_2 : this.level_3 ? this.level_3 : null;
       console.log(level);
       localStorage.setItem("data", level);
-      // this.hideHomePage();
-      this.$router.push({ name: "Game" })
+      this.hideHomePage();
+      // this.$router.push({ name: "Game" })
     },
   },
 };
