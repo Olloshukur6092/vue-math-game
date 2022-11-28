@@ -4,7 +4,7 @@
       <h1>MATH GAME</h1>
     </div>
     <div class="levelss my-5 text-center">
-      <h3>Select a Level</h3>
+      <h3>{{ langs.choise_a_level }}</h3>
       <div class="levels d-flex justify-content-center">
         <div class="level-1">
           <input
@@ -14,7 +14,7 @@
             value="BEGINNER"
             v-model="level_1"
           />
-          <label for="level_1">Level 1</label>
+          <label for="level_1">{{ langs.level1 }}</label>
         </div>
         <div class="level-2">
           <input
@@ -24,7 +24,7 @@
             value="JUNIOR"
             v-model="level_2"
           />
-          <label for="level_2">Level 2</label>
+          <label for="level_2">{{ langs.level2 }}</label>
         </div>
         <div class="level-3">
           <input
@@ -34,21 +34,22 @@
             value="MIDDLE"
             v-model="level_3"
           />
-          <label for="level_3">Level 3</label>
+          <label for="level_3">{{ langs.level3 }}</label>
         </div>
       </div>
     </div>
     <div class="btnSave d-flex justify-content-center">
-      <button type="button" @click="saveLevel">Save</button>
+      <button type="button" @click="saveLevel()">{{ langs.save }}</button>
     </div>
   </div>
 </template>
 <script>
-// import {  } from "vue-router";
+
 export default {
   props: {
    hideHomePage: { type: Function },
-   hideGamePage: { type: Function }
+   hideGamePage: { type: Function },
+   langs: { type: Object },
   },
   data() {
     return {
@@ -66,6 +67,7 @@ export default {
   },
   methods: {
     saveLevel() {
+      console.log()
       if (this.level_1 === null &&
           this.level_2 === null &&
           this.level_3 === null) {

@@ -1,0 +1,31 @@
+export const langUzb = {
+    choise_a_level: "Darajani tanlang",
+    level1: "1-Daraja",
+    level2: "2-Daraja",
+    level3: "3-Daraja",
+    save: "Saqlash",
+    all: "Umumiy",
+    back: "Orqaga",
+    your_level: "Sizning darajangiz",
+    play: "O'ynash",
+    score: "Natija",
+    level: "Daraja",
+    action: "Amallar",
+    delete: "O'chirish",
+};
+
+export const langEn = {
+    choise_a_level: "Choise a Level",
+    level1: "Level 1",
+    level2: "Level 2",
+    level3: "Level 3",
+    save: "Save",
+    all: "All",
+    back: "Back",
+    your_level: "Your Level",
+    play: "Play",
+    score: "Score",
+    level: "Level",
+    action: "Action",
+    delete: "Delete",
+};

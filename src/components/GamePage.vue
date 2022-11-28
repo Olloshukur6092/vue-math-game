@@ -7,9 +7,15 @@
         <h2>MATH GAME</h2>
       </div>
       <div class="navbar-right">
-        <h3>All: <strong class="mt-1">{{ ball }}x</strong></h3>
-        <button class="button-exit ms-4" @click="exit">Exit</button>
-      </div>
+        <div class="all-score me-3">
+        <h3>{{ langs.all }}: <strong>{{ ball }}x</strong></h3>
+        </div>
+        <select name="" id="" class="form-select w-25" v-model="lang_game" @change="lang(this.lang_game)">
+          <option value="uz">UZ</option>
+          <option value="en">EN</option>
+        </select>
+        <button class="button-exit ms-4" @click="exit">{{ langs.back }}</button>
+      </div>  
     </nav>
   </header>
   <div class="my-4 p-4">
@@ -26,7 +32,7 @@
         <div class="card mt-4 shadow-lg border-0">
           <div class="card-header bg-white p-4 text-center">
             <div class="card-level">
-              <span>Your Level - </span><strong>{{ level }}</strong>
+              <span>{{ langs.your_level }} - </span><strong>{{ level }}</strong>
             </div>
             <!-- <button class="btn btn-outline-dark game_start" @click="startGame">
               Start
@@ -34,7 +40,7 @@
           </div>
           <div class="card-body position-relative">
             <div v-if="game" class="game-play">
-              <h1 @click="startGame">Play</h1>
+              <h1 @click="startGame">{{ langs.play }}</h1>
             </div>
             <div class="question text-center">
               <h1>{{ questions.question }} = ?</h1>
@@ -76,9 +82,9 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Score</th>
-                <th>Level</th>
-                <th>Action</th>
+                <th>{{ langs.score }}</th>
+                <th>{{ langs.level }}</th>
+                <th>{{ langs.action }}</th>
               </tr>
             </thead>
             <tbody v-if="results">
@@ -88,7 +94,7 @@
                 <td>{{ result.level }}</td>
                 <td>
                   <button class="btn btn-danger" @click="remove(result)">
-                    Delete
+                    {{ langs.delete }}
                   </button>
                 </td>
               </tr>
@@ -115,6 +121,9 @@ export default {
   props: {
     hideHomePage: { type: Function },
     hideGamePage: { type: Function },
+    lang: { type: Function },
+    language: { type: String },
+    langs: { type: Object },
   },
   data() {
     return {
@@ -130,13 +139,13 @@ export default {
       modal: false,
       game: true,
       count: 4,
+      lang_game: this.language,
     };
   },
   mounted() {
     this.getLevel();
     this.result();
     this.allBall();
-    console.log(this.questionsAnswers());
   },
   methods: {
     saveLocalStorage(result) {
@@ -232,6 +241,7 @@ export default {
         this.time--;
         if (this.time === 0) {
           this.saveGame();
+          this.ball += this.score;
           clearInterval(interval);
           this.gameEnd();
         }
