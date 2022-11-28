@@ -35,7 +35,7 @@ export default {
     return {
       home: true,
       game_station: false,
-      language: "uz",
+      language: "en",
       langs: {},
     };
   },
