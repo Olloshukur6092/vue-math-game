@@ -8,14 +8,22 @@
       </div>
       <div class="navbar-right">
         <div class="all-score me-3">
-        <h3>{{ langs.all }}: <strong>{{ ball }}x</strong></h3>
+          <h3>
+            {{ langs.all }}: <strong>{{ ball }}x</strong>
+          </h3>
         </div>
-        <select name="" id="" class="form-select w-25" v-model="lang_game" @change="lang(this.lang_game)">
+        <select
+          name=""
+          id=""
+          class="form-select w-25"
+          v-model="lang_game"
+          @change="lang(this.lang_game)"
+        >
           <option value="uz">UZ</option>
           <option value="en">EN</option>
         </select>
         <button class="button-exit ms-4" @click="exit">{{ langs.back }}</button>
-      </div>  
+      </div>
     </nav>
   </header>
   <div class="my-4 p-4">
@@ -146,6 +154,9 @@ export default {
     this.getLevel();
     this.result();
     this.allBall();
+    this.questionsAnswers();
+    console.log(this.questions);
+    console.log(level1[0])
   },
   methods: {
     saveLocalStorage(result) {
@@ -215,7 +226,7 @@ export default {
       this.questionsAnswers();
     },
     allBall() {
-      for (let i = 0; i < this.results.length; i ++) {
+      for (let i = 0; i < this.results.length; i++) {
         this.ball += this.results[i].score;
       }
       return this.ball;

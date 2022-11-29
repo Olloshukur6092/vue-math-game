@@ -53,7 +53,7 @@ export default {
       this.getLang();
     },
     getLang() {
-      this.language = localStorage.getItem("lang") || "uz";
+      this.language = localStorage.getItem("lang") || "en";
       if (this.language === "en") {
         this.langs = langEn;
       }
